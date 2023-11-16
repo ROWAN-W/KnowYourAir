@@ -16,8 +16,6 @@ struct DataView: View {
                 Text("Air Quality")
                     .bold()
                     .font(.title)
-                    
-                
                 Text("Air Pollutions").font(.title)
                 
                 HStack(alignment: .firstTextBaseline, spacing: .zero){
@@ -28,6 +26,19 @@ struct DataView: View {
                     Text("NO").font(.title)
                     Text("2").font(.subheadline)
                 }
+                HStack(alignment: .firstTextBaseline, spacing: .zero){
+                    Text("PM").font(.title)
+                    Text("10").font(.subheadline)
+                }
+                HStack(alignment: .firstTextBaseline, spacing: .zero){
+                    Text("PM").font(.title)
+                    Text("2.5").font(.subheadline)
+                }
+                HStack(alignment: .firstTextBaseline, spacing: .zero){
+                    Text("O").font(.title)
+                    Text("3").font(.subheadline)
+                }
+                Text("CO").font(.title)
             }
             .padding(.trailing)
             
@@ -38,6 +49,10 @@ struct DataView: View {
                 Text("μg/m3").font(.title)
                 Text(String(viewModel.airQuality.so2)).font(.title)
                 Text(String(viewModel.airQuality.no2)).font(.title)
+                Text(String(viewModel.airQuality.pm10)).font(.title)
+                Text(String(viewModel.airQuality.pm25)).font(.title)
+                Text(String(viewModel.airQuality.o3)).font(.title)
+                Text(String(viewModel.airQuality.co)).font(.title)
             }
         }
     }

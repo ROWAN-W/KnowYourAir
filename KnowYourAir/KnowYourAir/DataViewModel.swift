@@ -8,5 +8,8 @@
 import Foundation
 
 class DataViewModel {
-      var airQuality = AirQuality()
+    var airQuality = AirQuality()
+    
+    
+    
 }
