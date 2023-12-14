@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct DataView: View {
-    var viewModel = DataViewModel()
+struct PollutionDataView: View {
+   @ObservedObject var viewModel = PollutionDataViewModel()
     var body: some View {
         
         HStack{
@@ -59,5 +59,5 @@ struct DataView: View {
 }
 
 #Preview {
-    DataView()
+    PollutionDataView()
 }

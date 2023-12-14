@@ -7,9 +7,7 @@
 
 import Foundation
 
-class DataViewModel {
+class PollutionDataViewModel: ObservableObject {
     var airQuality = AirQuality()
-    
-    
-    
+
 }

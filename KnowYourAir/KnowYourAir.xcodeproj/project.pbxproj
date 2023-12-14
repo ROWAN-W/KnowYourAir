@@ -15,8 +15,10 @@
 		1A68FEB92AFFE24300719A17 /* KnowYourAirUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A68FEB82AFFE24300719A17 /* KnowYourAirUITests.swift */; };
 		1A68FEBB2AFFE24300719A17 /* KnowYourAirUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A68FEBA2AFFE24300719A17 /* KnowYourAirUITestsLaunchTests.swift */; };
 		1A68FEC82AFFEA1C00719A17 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A68FEC72AFFEA1C00719A17 /* MapView.swift */; };
-		1A7D5EC22B01274900A751F9 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5EC12B01274900A751F9 /* DataView.swift */; };
-		1A7D5EC42B01275D00A751F9 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5EC32B01275D00A751F9 /* DataViewModel.swift */; };
+		1A74D4422B2206600071FDD5 /* PollutionDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A74D4412B2206600071FDD5 /* PollutionDataProvider.swift */; };
+		1A74D44A2B2277940071FDD5 /* AirQualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A74D4492B2277940071FDD5 /* AirQualityTests.swift */; };
+		1A7D5EC22B01274900A751F9 /* PollutionDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5EC12B01274900A751F9 /* PollutionDataView.swift */; };
+		1A7D5EC42B01275D00A751F9 /* PollutionDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5EC32B01275D00A751F9 /* PollutionDataViewModel.swift */; };
 		1A7D5EC62B01276B00A751F9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5EC52B01276B00A751F9 /* MapViewModel.swift */; };
 		1A7D5EC82B0129ED00A751F9 /* AirQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5EC72B0129ED00A751F9 /* AirQuality.swift */; };
 /* End PBXBuildFile section */
@@ -51,8 +53,10 @@
 		1A68FEB82AFFE24300719A17 /* KnowYourAirUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowYourAirUITests.swift; sourceTree = "<group>"; };
 		1A68FEBA2AFFE24300719A17 /* KnowYourAirUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowYourAirUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1A68FEC72AFFEA1C00719A17 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		1A7D5EC12B01274900A751F9 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
-		1A7D5EC32B01275D00A751F9 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
+		1A74D4412B2206600071FDD5 /* PollutionDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionDataProvider.swift; sourceTree = "<group>"; };
+		1A74D4492B2277940071FDD5 /* AirQualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityTests.swift; sourceTree = "<group>"; };
+		1A7D5EC12B01274900A751F9 /* PollutionDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionDataView.swift; sourceTree = "<group>"; };
+		1A7D5EC32B01275D00A751F9 /* PollutionDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionDataViewModel.swift; sourceTree = "<group>"; };
 		1A7D5EC52B01276B00A751F9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		1A7D5EC72B0129ED00A751F9 /* AirQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQuality.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,13 +109,12 @@
 		1A68FE9B2AFFE24100719A17 /* KnowYourAir */ = {
 			isa = PBXGroup;
 			children = (
+				1A74D4482B226D250071FDD5 /* Model */,
+				1A74D4452B226CEC0071FDD5 /* View */,
 				1A68FE9C2AFFE24100719A17 /* KnowYourAirApp.swift */,
-				1A68FE9E2AFFE24100719A17 /* ContentView.swift */,
-				1A68FEC72AFFEA1C00719A17 /* MapView.swift */,
-				1A7D5EC72B0129ED00A751F9 /* AirQuality.swift */,
-				1A7D5EC52B01276B00A751F9 /* MapViewModel.swift */,
-				1A7D5EC12B01274900A751F9 /* DataView.swift */,
-				1A7D5EC32B01275D00A751F9 /* DataViewModel.swift */,
+				1A74D4432B226A840071FDD5 /* ViewModel */,
+				1A7D5EC12B01274900A751F9 /* PollutionDataView.swift */,
+				1A74D4412B2206600071FDD5 /* PollutionDataProvider.swift */,
 				1A68FEA02AFFE24300719A17 /* Assets.xcassets */,
 				1A68FEA22AFFE24300719A17 /* KnowYourAir.entitlements */,
 				1A68FEA32AFFE24300719A17 /* Preview Content */,
@@ -142,6 +145,33 @@
 				1A68FEBA2AFFE24300719A17 /* KnowYourAirUITestsLaunchTests.swift */,
 			);
 			path = KnowYourAirUITests;
+			sourceTree = "<group>";
+		};
+		1A74D4432B226A840071FDD5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1A7D5EC32B01275D00A751F9 /* PollutionDataViewModel.swift */,
+				1A7D5EC52B01276B00A751F9 /* MapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1A74D4452B226CEC0071FDD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A68FE9E2AFFE24100719A17 /* ContentView.swift */,
+				1A68FEC72AFFEA1C00719A17 /* MapView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A74D4482B226D250071FDD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A7D5EC72B0129ED00A751F9 /* AirQuality.swift */,
+				1A74D4492B2277940071FDD5 /* AirQualityTests.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,10 +305,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A68FE9F2AFFE24100719A17 /* ContentView.swift in Sources */,
+				1A74D4422B2206600071FDD5 /* PollutionDataProvider.swift in Sources */,
 				1A68FEC82AFFEA1C00719A17 /* MapView.swift in Sources */,
-				1A7D5EC22B01274900A751F9 /* DataView.swift in Sources */,
+				1A7D5EC22B01274900A751F9 /* PollutionDataView.swift in Sources */,
 				1A68FE9D2AFFE24100719A17 /* KnowYourAirApp.swift in Sources */,
-				1A7D5EC42B01275D00A751F9 /* DataViewModel.swift in Sources */,
+				1A7D5EC42B01275D00A751F9 /* PollutionDataViewModel.swift in Sources */,
 				1A7D5EC62B01276B00A751F9 /* MapViewModel.swift in Sources */,
 				1A7D5EC82B0129ED00A751F9 /* AirQuality.swift in Sources */,
 			);
@@ -288,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A74D44A2B2277940071FDD5 /* AirQualityTests.swift in Sources */,
 				1A68FEAF2AFFE24300719A17 /* KnowYourAirTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

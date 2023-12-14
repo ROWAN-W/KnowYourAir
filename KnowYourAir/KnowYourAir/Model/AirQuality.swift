@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AirQuality: ObservableObject {
+struct AirQuality {
     
     enum AirQuality: String {
         case good = "Good"
@@ -90,3 +90,5 @@ class AirQuality: ObservableObject {
         return false
     }
 }
+
+
