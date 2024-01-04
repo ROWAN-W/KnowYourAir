@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AirQuality {
+struct AirQuality: Decodable {
     
     enum AirQuality: String {
         case good = "Good"
@@ -18,12 +18,12 @@ struct AirQuality {
         case unKnown = "Unknown"
     }
     
-    var co: Double = 201.94053649902344
-    var no2: Double = 0.7711350917816162
-    var o3: Double = 68.66455078125
-    var so2: Double = 0.6407499313354492
+    var co: Double = 201.9
+    var no2: Double = 0.7
+    var o3: Double = 68.6
+    var so2: Double = 0.6
     var pm25: Double = 0.5
-    var pm10: Double = 0.540438711643219
+    var pm10: Double = 0.5
     
     var airQuality: AirQuality {
         if isGood() { return .good }

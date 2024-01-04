@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct PollutionDataView: View {
-   @ObservedObject var viewModel = PollutionDataViewModel()
+    @ObservedObject var viewModel = PollutionDataViewModel(pollutionData: nil)
+    
     var body: some View {
-        
         HStack{
             VStack(alignment: .trailing) {
                 Text("Air Quality")
                     .bold()
                     .font(.title)
-                Text("Air Pollutions").font(.title)
+                Text("Air Pollutions SILLY ROWY").font(.title)
                 
                 HStack(alignment: .firstTextBaseline, spacing: .zero){
                     Text("SO").font(.title)
@@ -42,18 +42,18 @@ struct PollutionDataView: View {
             }
             .padding(.trailing)
             
-            VStack(alignment: .leading) {
-                Text(viewModel.airQuality.airQuality.rawValue)
-                    .bold()
-                    .font(.title)
-                Text("μg/m3").font(.title)
-                Text(String(viewModel.airQuality.so2)).font(.title)
-                Text(String(viewModel.airQuality.no2)).font(.title)
-                Text(String(viewModel.airQuality.pm10)).font(.title)
-                Text(String(viewModel.airQuality.pm25)).font(.title)
-                Text(String(viewModel.airQuality.o3)).font(.title)
-                Text(String(viewModel.airQuality.co)).font(.title)
-            }
+//            VStack(alignment: .leading) {
+//                Text(viewModel.jsonResponse?.airQuality.rawValue)
+//                    .bold()
+//                    .font(.title)
+//                Text("μg/m3").font(.title)
+//                Text(String(viewModel.airQuality.so2)).font(.title)
+//                Text(String(viewModel.airQuality.no2)).font(.title)
+//                Text(String(viewModel.airQuality.pm10)).font(.title)
+//                Text(String(viewModel.airQuality.pm25)).font(.title)
+//                Text(String(viewModel.airQuality.o3)).font(.title)
+//                Text(String(viewModel.airQuality.co)).font(.title)
+//            }
         }
     }
 }
