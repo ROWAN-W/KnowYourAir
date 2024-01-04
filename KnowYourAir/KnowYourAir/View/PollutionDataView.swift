@@ -42,18 +42,18 @@ struct PollutionDataView: View {
             }
             .padding(.trailing)
             
-//            VStack(alignment: .leading) {
-//                Text(viewModel.jsonResponse?.airQuality.rawValue)
-//                    .bold()
-//                    .font(.title)
-//                Text("μg/m3").font(.title)
-//                Text(String(viewModel.airQuality.so2)).font(.title)
-//                Text(String(viewModel.airQuality.no2)).font(.title)
-//                Text(String(viewModel.airQuality.pm10)).font(.title)
-//                Text(String(viewModel.airQuality.pm25)).font(.title)
-//                Text(String(viewModel.airQuality.o3)).font(.title)
-//                Text(String(viewModel.airQuality.co)).font(.title)
-//            }
+            VStack(alignment: .leading) {
+                Text(viewModel.pollutionData?.airQuality.airQuality.rawValue ?? "unkown")
+                    .bold()
+                    .font(.title)
+                Text("μg/m3").font(.title)
+                Text(String(viewModel.pollutionData?.airQuality.so2 ?? 0.0)).font(.title)
+                Text(String(viewModel.pollutionData?.airQuality.no2 ?? 0.0)).font(.title)
+                Text(String(viewModel.pollutionData?.airQuality.pm10 ?? 0.0)).font(.title)
+                Text(String(viewModel.pollutionData?.airQuality.pm25 ?? 0.0)).font(.title)
+                Text(String(viewModel.pollutionData?.airQuality.o3 ?? 0.0)).font(.title)
+                Text(String(viewModel.pollutionData?.airQuality.co ?? 0.0)).font(.title)
+            }
         }
     }
 }

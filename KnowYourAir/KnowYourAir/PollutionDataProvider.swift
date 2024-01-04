@@ -34,7 +34,7 @@ class PollutionDataProvider {
         }
         let coord = Coordinates(latitude: response.coord[0], longitude: response.coord[1])
         let data = response.list[0]
-        let pollutionData = PollutionData(coord: coord, time: data.dt, quality: data.components)
+        let pollutionData = PollutionData(coord: coord, time: data.dt, airQuality: data.components)
         return pollutionData
     }
 }
