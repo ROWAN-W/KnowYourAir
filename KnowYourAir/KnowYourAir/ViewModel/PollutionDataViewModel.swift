@@ -18,7 +18,10 @@ class PollutionDataViewModel: ObservableObject {
         self.dataProvider = dataProvider
     }
     
-    func fetchData(lat: Double = 51.5, lon: Double = 0.1) async {
-        pollutionData = try await self.dataProvider.getAirQuality()
+    func fetchData(lat: Double = 51.5, lon: Double = 0.1) {
+        Task { @MainActor in
+           let data = await self.dataProvider.getAirQuality(lat: lat, lon: lon)
+           self.pollutionData = data
+        }
     }
 }

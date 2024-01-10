@@ -6,46 +6,110 @@
 
 
 import Foundation
+import CoreLocation
+
+enum Endpoint {
+    case airPollution(CLLocation)
+
+    var baseURLString: String { "http://api.openweathermap.org/data" }
+
+    var version: String { "/2.5" }
+
+    var method: String {
+        switch self {
+        case .airPollution:
+            "GET"
+        }
+    }
+
+    var resource: String {
+        switch self {
+        case .airPollution:
+            return "/air_pollution"
+        }
+    }
+
+    var queryParameters: [String: String] {
+        var params = ["appid": "27b3233fb194145bebbf28f441970661"]
+        switch self {
+        case let .airPollution(location):
+            params["lat"] = "\(location.coordinate.latitude)"
+            params["lon"] = "\(location.coordinate.longitude)"
+        }
+        return params
+    }
+}
+
+class HTTPClient {
+    enum HTTPRequestError: Error {
+        case invalidURLFormat
+    }
+
+    let session: URLSession
+
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
+
+    func fetch(endpoint: Endpoint) async throws -> Data {
+        do {
+            var urlComponents = URLComponents(string: endpoint.baseURLString + endpoint.version + endpoint.resource)
+            if !endpoint.queryParameters.isEmpty {
+                urlComponents?.queryItems = endpoint.queryParameters.map({ (key, value) in
+                    return URLQueryItem(name: key, value: value)
+                })
+            }
+            guard let url = urlComponents?.url else {
+                throw HTTPRequestError.invalidURLFormat
+            }
+            var urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = endpoint.method
+            let (data, _) = try await session.data(for: urlRequest)
+            return data
+        } catch {
+            print(error)
+            throw error
+        }
+    }
+}
 
 class PollutionDataProvider {
     
-    var airQualityResponse: AirQualityResponse?
+    let httpClient: HTTPClient
     
-    private func fetchPollutionData(lat: Double, lon: Double) async throws {
-        //create the new url
-        let url = URL(string: "http://api.openweathermap.org/data/2.5/air_pollution?lat&lon3&appid=27b3233fb194145bebbf28f441970661".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
-        //create a new urlRequest passing the url
-        let request = URLRequest(url: url!)
-        //run the request and retrieve both the data and the response of the call
-        let (data, response) = try await URLSession.shared.data(for: request)
-        //checks if there are errors regarding the HTTP status code and decodes using the passed struct
-        airQualityResponse = try JSONDecoder().decode(AirQualityResponse.self, from: data)
+    init(httpClient: HTTPClient = HTTPClient()) {
+        self.httpClient = httpClient
     }
     
-    func getAirQuality() async -> PollutionData? {
-        do{
-            try await fetchPollutionData(lat: 51.5, lon: 0.128)
-        } catch {
-           return nil
+    private func fetchPollutionData(lat: Double, lon: Double) async -> AirQualityResponse? {
+        do {
+            let data = try await httpClient.fetch(endpoint: .airPollution(CLLocation(latitude: lat, longitude: lon)))
+            return try JSONDecoder().decode(AirQualityResponse.self, from: data)
         }
-        guard let response = airQualityResponse else { return nil}
-        if response.coord.count != 2 || response.list.count != 1{
+        catch {
+            print(error)
             return nil
         }
-        let coord = Coordinates(latitude: response.coord[0], longitude: response.coord[1])
+    }
+    
+    func getAirQuality(lat: Double, lon: Double) async -> PollutionData? {
+        guard let response = await fetchPollutionData(lat: lat, lon: lon) else { return nil}
+        if response.list.count != 1{
+            return nil
+        }
         let data = response.list[0]
-        let pollutionData = PollutionData(coord: coord, time: data.dt, airQuality: data.components)
+        let pollutionData = PollutionData(coord: response.coord, time: data.dt, airQuality: data.components)
         return pollutionData
     }
 }
 
 struct AirQualityResponse: Decodable {
-    let coord: [Double]
+    let coord: Coordinates
     let list: [DataList]
 }
 
 struct DataList: Decodable {
-    let dt: String
+    let dt: TimeInterval
     let components: AirQuality
 }
 

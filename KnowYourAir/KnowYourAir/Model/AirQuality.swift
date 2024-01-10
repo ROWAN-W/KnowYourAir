@@ -9,6 +9,15 @@ import Foundation
 
 struct AirQuality: Decodable {
     
+    enum CodingKeys: String, CodingKey {
+        case co
+        case no2
+        case o3
+        case so2
+        case pm25 = "pm2_5"
+        case pm10
+    }
+    
     enum AirQuality: String {
         case good = "Good"
         case fair = "Fair"

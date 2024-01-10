@@ -16,7 +16,7 @@ struct PollutionDataView: View {
                 Text("Air Quality")
                     .bold()
                     .font(.title)
-                Text("Air Pollutions SILLY ROWY").font(.title)
+                Text("Air Pollutions").font(.title)
                 
                 HStack(alignment: .firstTextBaseline, spacing: .zero){
                     Text("SO").font(.title)
@@ -54,6 +54,8 @@ struct PollutionDataView: View {
                 Text(String(viewModel.pollutionData?.airQuality.o3 ?? 0.0)).font(.title)
                 Text(String(viewModel.pollutionData?.airQuality.co ?? 0.0)).font(.title)
             }
+        }.onAppear{
+            viewModel.fetchData()
         }
     }
 }

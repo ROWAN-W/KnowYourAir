@@ -9,22 +9,22 @@ import Foundation
 
 struct PollutionData {
     let coord: Coordinates
-    let time: String
+    let time: TimeInterval
     let airQuality: AirQuality
     
-    init(coord: Coordinates = Coordinates(latitude: 51.5, longitude: 0.128), time: String = "1605182400", airQuality: AirQuality = AirQuality()) {
+    init(coord: Coordinates = Coordinates(lat: 51.5, lon: 0.128), time: Double = 1605182400, airQuality: AirQuality = AirQuality()) {
         self.coord = coord
         self.time = time
         self.airQuality = airQuality
     }
 }
 
-struct Coordinates {
-    let latitude: Double
-    let longitude: Double
+struct Coordinates: Decodable {
+    let lat: Double
+    let lon: Double
     
-    init(latitude: Double, longitude: Double) {
-        self.latitude = latitude
-        self.longitude = longitude
+    init(lat: Double, lon: Double) {
+        self.lat = lat
+        self.lon = lon
     }
 }

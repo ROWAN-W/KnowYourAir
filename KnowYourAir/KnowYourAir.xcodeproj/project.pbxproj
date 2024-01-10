@@ -60,6 +60,7 @@
 		1A7D5EC32B01275D00A751F9 /* PollutionDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionDataViewModel.swift; sourceTree = "<group>"; };
 		1A7D5EC52B01276B00A751F9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		1A7D5EC72B0129ED00A751F9 /* AirQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQuality.swift; sourceTree = "<group>"; };
+		49853B952B49BD3E008E2226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		49ED64F12B3A128400CB6E19 /* PollutionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +112,7 @@
 		1A68FE9B2AFFE24100719A17 /* KnowYourAir */ = {
 			isa = PBXGroup;
 			children = (
+				49853B952B49BD3E008E2226 /* Info.plist */,
 				1A74D4482B226D250071FDD5 /* Model */,
 				1A74D4452B226CEC0071FDD5 /* View */,
 				1A68FE9C2AFFE24100719A17 /* KnowYourAirApp.swift */,
@@ -480,6 +482,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KnowYourAir/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -518,6 +521,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KnowYourAir/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
