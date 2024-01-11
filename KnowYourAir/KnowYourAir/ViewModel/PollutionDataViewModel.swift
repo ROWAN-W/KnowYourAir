@@ -8,8 +8,11 @@
 import Foundation
 
 
+
+
 class PollutionDataViewModel: ObservableObject {
     @Published var pollutionData: PollutionData?
+    let locationManager:
     
     private let dataProvider: PollutionDataProvider
     
@@ -23,5 +26,9 @@ class PollutionDataViewModel: ObservableObject {
            let data = await self.dataProvider.getAirQuality(lat: lat, lon: lon)
            self.pollutionData = data
         }
+    }
+    
+    func refreshDataWithLocation() {
+        
     }
 }

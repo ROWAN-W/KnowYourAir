@@ -21,6 +21,7 @@
 		1A7D5EC42B01275D00A751F9 /* PollutionDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5EC32B01275D00A751F9 /* PollutionDataViewModel.swift */; };
 		1A7D5EC62B01276B00A751F9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5EC52B01276B00A751F9 /* MapViewModel.swift */; };
 		1A7D5EC82B0129ED00A751F9 /* AirQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5EC72B0129ED00A751F9 /* AirQuality.swift */; };
+		49853B972B4F724D008E2226 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853B962B4F724D008E2226 /* LocationManager.swift */; };
 		49ED64F22B3A128400CB6E19 /* PollutionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED64F12B3A128400CB6E19 /* PollutionData.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		1A7D5EC52B01276B00A751F9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		1A7D5EC72B0129ED00A751F9 /* AirQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQuality.swift; sourceTree = "<group>"; };
 		49853B952B49BD3E008E2226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		49853B962B4F724D008E2226 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		49ED64F12B3A128400CB6E19 /* PollutionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 				1A68FE9C2AFFE24100719A17 /* KnowYourAirApp.swift */,
 				1A74D4432B226A840071FDD5 /* ViewModel */,
 				1A74D4412B2206600071FDD5 /* PollutionDataProvider.swift */,
+				49853B962B4F724D008E2226 /* LocationManager.swift */,
 				1A68FEA02AFFE24300719A17 /* Assets.xcassets */,
 				1A68FEA22AFFE24300719A17 /* KnowYourAir.entitlements */,
 				1A68FEA32AFFE24300719A17 /* Preview Content */,
@@ -311,6 +314,7 @@
 			files = (
 				1A68FE9F2AFFE24100719A17 /* ContentView.swift in Sources */,
 				1A74D4422B2206600071FDD5 /* PollutionDataProvider.swift in Sources */,
+				49853B972B4F724D008E2226 /* LocationManager.swift in Sources */,
 				1A68FEC82AFFEA1C00719A17 /* MapView.swift in Sources */,
 				49ED64F22B3A128400CB6E19 /* PollutionData.swift in Sources */,
 				1A7D5EC22B01274900A751F9 /* PollutionDataView.swift in Sources */,

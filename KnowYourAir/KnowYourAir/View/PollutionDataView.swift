@@ -11,6 +11,28 @@ struct PollutionDataView: View {
     @ObservedObject var viewModel = PollutionDataViewModel(pollutionData: nil)
     
     var body: some View {
+        VStack{
+            HStack{
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Image(systemName: "location.circle").imageScale(.large).padding()
+                }
+            }
+            AirQualityView(viewModel: viewModel)
+        }
+    }
+}
+
+struct AirQualityView: View {
+    @ObservedObject var viewModel: PollutionDataViewModel
+    
+    init(viewModel: PollutionDataViewModel = PollutionDataViewModel(pollutionData: nil)) {
+        self.viewModel = viewModel
+    }
+    
+    var body: some View {
         HStack{
             VStack(alignment: .trailing) {
                 Text("Air Quality")
@@ -59,7 +81,6 @@ struct PollutionDataView: View {
         }
     }
 }
-
 #Preview {
     PollutionDataView()
 }
