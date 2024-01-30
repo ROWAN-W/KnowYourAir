@@ -2,30 +2,52 @@
 //  LocationManager.swift
 //  KnowYourAir
 //
-//  Created by 王子润 on 11/01/2024.
+//  Created by ROWAN WANG on 11/01/2024.
 //
 
 import Foundation
 import CoreLocation
+import Combine
 
-class LocationManager: CLLocationManagerDelegate{
+class LocationManager: NSObject, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
-    
-    init() {
+
+
+    override init() {
+        super.init()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
     }
-    
-    func getAuth() {
+
+    func getAuth() throws {
         // Ask for Authorisation from the User.
-        self.locationManager.requestAlwaysAuthorization()
-
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self.locationManager
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
+       // self.locationManager.requestAlwaysAuthorization()
+        if locationManager.authorizationStatus == .notDetermined {
+            // For use in foreground
+            self.locationManager.requestWhenInUseAuthorization()
         }
+        else {
+            switch locationManager.authorizationStatus {
+            case .authorizedWhenInUse:
+                locationManager.startUpdatingLocation()
+            default:
+                // prompt alert (throw error)
+                break
+            }
+        }
+    }
 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
+    }
+
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch locationManager.authorizationStatus {
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        default:
+            // prompt alert (throw error)
+            break
+        }
     }
 }

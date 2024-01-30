@@ -7,18 +7,16 @@
 
 import Foundation
 
-
-
-
 class PollutionDataViewModel: ObservableObject {
     @Published var pollutionData: PollutionData?
-    let locationManager:
+    let locationManager: LocationManager
     
     private let dataProvider: PollutionDataProvider
     
-    init(pollutionData: PollutionData?, dataProvider: PollutionDataProvider = PollutionDataProvider()) {
+    init(pollutionData: PollutionData?, dataProvider: PollutionDataProvider = PollutionDataProvider(), locationManager: LocationManager = LocationManager()) {
         self.pollutionData = pollutionData
         self.dataProvider = dataProvider
+        self.locationManager = locationManager
     }
     
     func fetchData(lat: Double = 51.5, lon: Double = 0.1) {
@@ -28,7 +26,12 @@ class PollutionDataViewModel: ObservableObject {
         }
     }
     
-    func refreshDataWithLocation() {
-        
+    func refreshLocation() {
+        do {
+            try locationManager.getAuth()
+        } catch {
+            // error management
+            print(error)
+        }
     }
 }

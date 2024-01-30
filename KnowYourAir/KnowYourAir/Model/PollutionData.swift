@@ -2,7 +2,7 @@
 //  Pollutiondata.swift
 //  KnowYourAir
 //
-//  Created by Rowy on 25/12/2023.
+//  Created by ROWAN WANG on 25/12/2023.
 //
 
 import Foundation

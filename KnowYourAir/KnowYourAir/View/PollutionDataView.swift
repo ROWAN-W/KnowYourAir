@@ -15,7 +15,7 @@ struct PollutionDataView: View {
             HStack{
                 Spacer()
                 Button {
-                    
+                    viewModel.refreshLocation()
                 } label: {
                     Image(systemName: "location.circle").imageScale(.large).padding()
                 }
