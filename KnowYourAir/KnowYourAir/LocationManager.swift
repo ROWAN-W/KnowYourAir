@@ -9,8 +9,9 @@ import Foundation
 import CoreLocation
 import Combine
 
-class LocationManager: NSObject, CLLocationManagerDelegate {
+class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     let locationManager = CLLocationManager()
+    @Published var location: CLLocation?
 
 
     override init() {
@@ -39,6 +40,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(locations)
+        self.location = locations.last
     }
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Combine
 
 class PollutionDataViewModel: ObservableObject {
     @Published var pollutionData: PollutionData?
     let locationManager: LocationManager
+    var subscriptions = Set<AnyCancellable>()
     
     private let dataProvider: PollutionDataProvider
     
@@ -17,6 +19,11 @@ class PollutionDataViewModel: ObservableObject {
         self.pollutionData = pollutionData
         self.dataProvider = dataProvider
         self.locationManager = locationManager
+        locationManager.$location.sink { [weak self] location in
+            if let currentLocation = location {
+                self?.fetchData(lat: currentLocation.coordinate.latitude, lon: currentLocation.coordinate.longitude)
+            }
+        }.store(in: &subscriptions)
     }
     
     func fetchData(lat: Double = 51.5, lon: Double = 0.1) {
