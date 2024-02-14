@@ -9,10 +9,16 @@ import Foundation
 import CoreLocation
 import Combine
 
+enum LocationPermission{
+    case granted
+    case denied
+    case unknown
+}
+
 class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     let locationManager = CLLocationManager()
     @Published var location: CLLocation?
-
+    @Published var locationPermission: LocationPermission = .unknown
 
     override init() {
         super.init()
@@ -25,16 +31,24 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
        // self.locationManager.requestAlwaysAuthorization()
         if locationManager.authorizationStatus == .notDetermined {
             // For use in foreground
+            self.locationPermission = .unknown
             self.locationManager.requestWhenInUseAuthorization()
         }
         else {
-            switch locationManager.authorizationStatus {
-            case .authorizedWhenInUse:
-                locationManager.startUpdatingLocation()
-            default:
-                // prompt alert (throw error)
-                break
-            }
+          changePermisionStatus()
+        }
+    }
+    
+    func changePermisionStatus() {
+        switch locationManager.authorizationStatus {
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            self.locationPermission = .granted
+        case .denied:
+            self.locationPermission = .denied
+        default:
+            // prompt alert (throw error)
+            break
         }
     }
 
@@ -42,14 +56,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         print(locations)
         self.location = locations.last
     }
-
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch locationManager.authorizationStatus {
-        case .authorizedWhenInUse:
-            locationManager.startUpdatingLocation()
-        default:
-            // prompt alert (throw error)
-            break
-        }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        changePermisionStatus()
     }
 }

@@ -12,23 +12,20 @@ struct PollutionDataView: View {
     
     var body: some View {
         ZStack{
-            Image("background")
+            Image("background 1")
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
-            VStack{
-                HStack{
-                    Spacer()
-                    Button {
-                        viewModel.refreshLocation()
-                    } label: {
-                        Image(systemName: "location.circle").imageScale(.large).padding()
-                    }
-                }
-                AirQualityView(viewModel: viewModel)
-            }
-            
+                .blur(radius: 3.0)
+            AirQualityView(viewModel: viewModel)
+                .padding(.bottom)
         }
+        .onAppear(perform: {
+            viewModel.getLocation()
+        })
+        .alert(isPresented: $viewModel.shouldShowAlert, content: {
+            Alert(title: Text("Please Grant Location Permission"), message: Text("This app needs your location to display airquality around you"), dismissButton: .default(Text("Got it!")))
+        })
     }
 }
 
@@ -44,54 +41,66 @@ struct AirQualityView: View {
             VStack(alignment: .trailing) {
                 Text("Air Quality")
                     .bold()
-                    .font(.title)
+                    .font(.largeTitle)
                     .foregroundStyle(.white)
                 
                 Text("Air Pollutions")
+                    .bold()
                     .font(.title)
                     .foregroundStyle(.white)
                 
                 HStack(alignment: .firstTextBaseline, spacing: .zero){
                     Text("SO")
+                        .bold()
                         .font(.title)
                         .foregroundStyle(.white)
                     Text("2")
+                        .bold()
                         .font(.subheadline)
                         .foregroundStyle(.white)
                 }
                 HStack(alignment: .firstTextBaseline, spacing: .zero){
                     Text("NO")
+                        .bold()
                         .font(.title)
                         .foregroundStyle(.white)
                     Text("2")
+                        .bold()
                         .font(.subheadline)
                         .foregroundStyle(.white)
                 }
                 HStack(alignment: .firstTextBaseline, spacing: .zero){
                     Text("PM")
+                        .bold()
                         .font(.title)
                         .foregroundStyle(.white)
                     Text("10")
+                        .bold()
                         .font(.subheadline)
                         .foregroundStyle(.white)
                 }
                 HStack(alignment: .firstTextBaseline, spacing: .zero){
                     Text("PM")
+                        .bold()
                         .font(.title)
                         .foregroundStyle(.white)
                     Text("2.5")
+                        .bold()
                         .font(.subheadline)
                         .foregroundStyle(.white)
                 }
                 HStack(alignment: .firstTextBaseline, spacing: .zero){
                     Text("O")
+                        .bold()
                         .font(.title)
                         .foregroundStyle(.white)
                     Text("3")
+                        .bold()
                         .font(.subheadline)
                         .foregroundStyle(.white)
                 }
                 Text("CO")
+                    .bold()
                     .font(.title)
                     .foregroundStyle(.white)
             }
@@ -100,32 +109,37 @@ struct AirQualityView: View {
             VStack(alignment: .leading) {
                 Text(viewModel.pollutionData?.airQuality.airQuality.rawValue ?? "unkown")
                     .bold()
-                    .font(.title)
+                    .font(.largeTitle)
                     .foregroundStyle(.white)
                 Text("μg/m3")
+                    .bold()
                     .font(.title)
                     .foregroundStyle(.white)
                 Text(String(viewModel.pollutionData?.airQuality.so2 ?? 0.0))
+                    .bold()
                     .font(.title)
                     .foregroundStyle(.white)
                 Text(String(viewModel.pollutionData?.airQuality.no2 ?? 0.0))
+                    .bold()
                     .font(.title)
                     .foregroundStyle(.white)
                 Text(String(viewModel.pollutionData?.airQuality.pm10 ?? 0.0))
+                    .bold()
                     .font(.title)
                     .foregroundStyle(.white)
                 Text(String(viewModel.pollutionData?.airQuality.pm25 ?? 0.0))
+                    .bold()
                     .font(.title)
                     .foregroundStyle(.white)
                 Text(String(viewModel.pollutionData?.airQuality.o3 ?? 0.0))
+                    .bold()
                     .font(.title)
                     .foregroundStyle(.white)
                 Text(String(viewModel.pollutionData?.airQuality.co ?? 0.0))
+                    .bold()
                     .font(.title)
                     .foregroundStyle(.white)
             }
-        }.onAppear{
-            viewModel.fetchData()
         }
     }
 }
