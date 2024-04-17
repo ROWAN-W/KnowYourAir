@@ -5,7 +5,7 @@ Live air quality around you
 
 prompt new air quality when user moved over significant distance while the app is on background
 
-<img src="https://github.com/ROWAN-W/KnowYourAir/assets/79567802/c5887ade-5715-4444-8c85-f4bf374caecd" width="270">
+<img src="https://github.com/ROWAN-W/KnowYourAir/assets/79567802/74af36fc-0596-4f87-a47b-99c2c4566ca1" width="270">
 
 
 Data source: https://openweathermap.org/api/air-pollution
