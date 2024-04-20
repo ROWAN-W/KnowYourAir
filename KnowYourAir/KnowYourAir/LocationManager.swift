@@ -23,7 +23,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     override init() {
         super.init()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
     }
 
     func getAuth() throws {
