@@ -73,7 +73,7 @@ class HTTPClient {
     }
 }
 
-class PollutionDataProvider {
+class PollutionDataProvider: ObservableObject {
     
     let httpClient: HTTPClient
     

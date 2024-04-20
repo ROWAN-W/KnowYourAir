@@ -18,12 +18,17 @@ enum LocationPermission{
 class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     let locationManager = CLLocationManager()
     @Published var location: CLLocation?
+    var oldLocation: CLLocation?
     @Published var locationPermission: LocationPermission = .unknown
 
     override init() {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+<<<<<<< Updated upstream
+=======
+        locationManager.allowsBackgroundLocationUpdates = true
+>>>>>>> Stashed changes
     }
 
     func getAuth() throws {
@@ -53,8 +58,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations)
+        self.oldLocation = self.location
         self.location = locations.last
+        print(self.location)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

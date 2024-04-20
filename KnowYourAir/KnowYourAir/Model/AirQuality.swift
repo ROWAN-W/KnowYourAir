@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AirQuality: Decodable {
+public struct AirQuality: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case co
@@ -18,7 +18,7 @@ struct AirQuality: Decodable {
         case pm10
     }
     
-    enum AirQuality: String {
+    public enum AirQualityRank: String {
         case good = "Good"
         case fair = "Fair"
         case moderate = "Moderate"
@@ -34,7 +34,7 @@ struct AirQuality: Decodable {
     var pm25: Double = 0.5
     var pm10: Double = 0.5
     
-    var airQuality: AirQuality {
+    var airQuality: AirQualityRank {
         if isGood() { return .good }
         if isFair() { return .fair }
         if isModerate() { return .moderate }

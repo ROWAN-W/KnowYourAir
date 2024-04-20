@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PollutionDataView: View {
+    @EnvironmentObject private var locationManager: LocationManager
     @ObservedObject var viewModel = PollutionDataViewModel(pollutionData: nil)
     
     var body: some View {
