@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import CoreLocation
 
 @main
 struct KnowYourAirApp: App {
@@ -68,8 +69,9 @@ class NotificationHandler {
             .dropFirst()
             .sink(receiveValue: { [weak self] newLocation in
                 Task { [weak self] in
-                    if let lat = newLocation?.coordinate.latitude, let lon = newLocation?.coordinate.longitude {
-                        let airQuality = await self?.dataProvider.getAirQuality(lat: lat, lon: lon)?.airQuality.airQuality
+                    guard let newLocation = newLocation, let oldLocation = self?.locationManager.oldLocation else {return}
+                    if !oldLocation.distance(from: newLocation).isLess(than: 1000.0) {
+                        let airQuality = await self?.dataProvider.getAirQuality(lat: newLocation.coordinate.latitude, lon: newLocation.coordinate.longitude)?.airQuality.airQuality
                         self?.sendAirQualityNotification(airQuality: airQuality ?? .unKnown)
                     }
                 }

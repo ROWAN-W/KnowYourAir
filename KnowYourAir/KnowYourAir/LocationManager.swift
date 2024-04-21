@@ -24,11 +24,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     override init() {
         super.init()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-<<<<<<< Updated upstream
-=======
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager.allowsBackgroundLocationUpdates = true
->>>>>>> Stashed changes
     }
 
     func getAuth() throws {
